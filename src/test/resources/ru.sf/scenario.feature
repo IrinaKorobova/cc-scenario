@@ -7,7 +7,7 @@ Feature: search bar
     Given  url of NL 'https://www.nlstar.com/ru/'
     When open online store
     Then website is open start search 'U2'
-    And assert that user got message 'Простите, по вашему запросу ничего не найдено.'
+    And assert that user got Image goods not found
 
 
 

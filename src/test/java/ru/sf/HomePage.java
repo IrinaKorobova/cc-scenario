@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage {
 
-    private static final String URL = "https://www.nlstar.com/ru/";
     private static final String SEARCH_FIELD_CLASS = "info-buttons__item";
 
     private final WebDriver webDriver;
@@ -14,8 +13,8 @@ public class HomePage {
         this.webDriver = webDriver;
     }
 
-    public void go () {
-        webDriver.get(URL);
+    public void go (String url) {
+        webDriver.get(url);
     }
 
     public void openOnlineStore () {

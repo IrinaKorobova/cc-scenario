@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.net.URL;
 import java.time.Duration;
 
@@ -24,28 +25,28 @@ public class StepDefenition {
 
     static {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\IdeaProjects\\сс-scenario\\src\\test\\resources\\chromedriver.exe");
-        webDriver =  new ChromeDriver();
+        webDriver = new ChromeDriver();
         homePage = new HomePage(webDriver);
         homePageOnlineStore = new HomePageOnlineStore(webDriver);
     }
 
     @Given("url of NL {string}")
     public void url_of_nl(String url) {
-        homePage.go();
+        homePage.go(url);
     }
 
     @When("open online store")
     public void open_online_store() {
         homePage.openOnlineStore();
     }
+
     @Then("website is open start search {string}")
     public void website_is_open_start_search(String searchParam) {
         homePageOnlineStore.searchGoods(searchParam);
     }
-    @Then("assert that user got message {string}")
-    public void assert_that_user_got_message(String errorMassage) {
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Assert.assertTrue(webDriver.findElement(By.className("page-search__not-found-image")).isDisplayed());
 
+    @Then("assert that user got Image goods not found")
+    public void assert_that_user_got_image_goods_not_found() {
+        homePageOnlineStore.errorImage();
     }
 }
